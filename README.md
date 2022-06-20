@@ -10,7 +10,7 @@ iconfont project
 ### 图片
 ![image](https://user-images.githubusercontent.com/3349863/174603114-1abecd68-3d4c-44a2-bac0-420e291d250a.png)
 ![image](https://user-images.githubusercontent.com/3349863/174603642-5ef77d80-eae0-4703-b57d-aa021a221d55.png)
-![Uploading image.png…]()
+![image](https://user-images.githubusercontent.com/3349863/174604243-7b1ce317-e1c3-407d-9c66-cb4e5ed5ba30.png)
 
 
 ### 配置说明
