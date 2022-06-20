@@ -1,12 +1,14 @@
-# deepwise-iconfont
+# iconfontLocal
 
 iconfont project
 
 
 ### 项目说明
-https://deepwise.feishu.cn/docx/doxcnsGYjToz9Gu72phROAF5SXc
+主要转化模块，来自 https://www.npmjs.com/package/@daipeng7/iconfont-webpack-plugin
+
+
 ### 配置说明
-```
+``` 
 // icon 源文件目录 
   config.iconSourceDir = '/Users/iconfontall/';
 
@@ -14,7 +16,7 @@ https://deepwise.feishu.cn/docx/doxcnsGYjToz9Gu72phROAF5SXc
   config.iconDistDir = '/Users/iconfonthtml/'
 
   // iconDistDir起一个静态服务的访问地址
-  config.iconUrl = 'http://127.0.0.1:4004/'
+  config.iconUrl = 'http://127.0.0.1:4005/'
 ```
 
 
