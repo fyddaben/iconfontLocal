@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="/public/element/index.css">
+  <style>
+    .el-tag + .el-tag {
+      margin-left: 10px;
+    }
+    .button-new-tag {
+      margin-left: 10px;
+      height: 32px;
+      line-height: 30px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .input-new-tag {
+      width: 90px;
+      margin-left: 10px;
+      vertical-align: bottom;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    目录列表:
+    <el-tag
+     :key="dir"
+     v-for="dir in dirArray"
+     :disable-transitions="false"
+     @click="goUrl(dir)"
+     >
+     {{dir}}
+    </el-tag>
+    <el-input
+      class="input-new-tag"
+      v-if="inputVisible"
+      v-model="inputValue"
+      ref="saveTagInput"
+      size="small"
+      @keyup.enter.native="handleInputConfirm"
+      @blur="handleInputConfirm"
+    >
+    </el-input>
+    <el-button v-else class="button-new-tag" size="small" @click="showInput">+ 新建/修改项目</el-button>
+    <el-dialog
+      title="上传svg 图片"
+      :visible.sync="dialogVisible"
+      width="30%"
+      >
+      <el-upload
+        class="upload-demo"
+        action="/uploadSvg"
+        multiple
+        :data="svgData"
+        :before-upload="handleBeforeUpload"
+        :auto-upload="true"
+        :show-file-list="false"
+        :on-success="handleSuccess"
+        >
+        <el-button size="small" type="primary">点击上传</el-button>
+        <div slot="tip" class="el-upload__tip">只能上传 svg 文件</div>
+      </el-upload>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+      </span> 
+    </el-dialog>
+  </div>
+</body>
+  <!-- import Vue before Element -->
+  <script src="/public/vue.min.js"></script>
+  <!-- import JavaScript -->
+  <script src="/public/element/index.js"></script>
+  <script>
+    const distDir = '<%= iconUrl %>';
+    new Vue({
+      el: '#app',
+      data: function() {
+        // 目录列表
+        const dirArray = '<%= dirArray %>'.split(",");
+        return { 
+          inputVisible: false,
+          dialogVisible: false,
+          projectName: '',
+          inputValue: '',
+          uploadFileCount: 0,
+          uploadSuccessCount: 0,
+          loading: null,
+          svgData: {
+            type: ''
+          },
+          dirArray, 
+        }
+      },
+      methods: {
+        goUrl(dir) {
+          location.href = distDir + dir + '/' 
+        },
+        handleSuccess(res) {
+          this.uploadSuccessCount++
+          if (this.uploadSuccessCount == this.uploadFileCount) {
+            if (this.dirArray.indexOf(this.projectName) == -1) {
+              this.dirArray.push(inputValue);
+            }
+            this.dialogVisible = false
+            this.$message({
+              message: '上传成功',
+              type: 'success'
+            });
+            // 重置
+            this.uploadSuccessCount = 0
+            this.uploadFileCount = 0
+            this.loading.close()
+          }
+        },
+        handleBeforeUpload(file) {
+          this.svgData.type = this.projectName
+          this.uploadFileCount++
+          this.loading = this.$loading({
+            lock: true,
+            text: 'Loading',
+            spinner: 'el-icon-loading',
+            background: 'rgba(0, 0, 0, 0.7)'
+          });
+          return true 
+        },
+        handleInputConfirm() {
+          let inputValue = this.inputValue;
+          if (/^[A-Za-z0-9]+$/.test(inputValue)) {
+            this.projectName = inputValue
+            this.dialogVisible = true
+          } else {
+            this.$message({
+              message: '只能输入英文数字',
+              type: 'warning'
+            });
+          }
+          this.inputVisible = false;
+          this.inputValue = '';
+        },
+        showInput() {
+          this.inputVisible = true;
+        },
+      }
+    })
+  </script>
+</html>
