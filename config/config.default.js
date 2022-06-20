@@ -18,10 +18,10 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [];
   // icon 源文件目录 
-  config.iconSourceDir = '/Users/fanyongdong/deepwise/iconfontall/';
+  config.iconSourceDir = '/Users/iconfontall/';
 
   // iconfont 最终生成的目录
-  config.iconDistDir = '/Users/fanyongdong/deepwise/iconfonthtml/'
+  config.iconDistDir = '/Users/iconfonthtml/'
 
   // iconfont 访问地址
   config.iconUrl = 'http://127.0.0.1:4004/'
