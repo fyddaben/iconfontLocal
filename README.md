@@ -4,7 +4,11 @@ iconfont project
 
 
 ### 项目说明
-主要转化模块，来自 https://www.npmjs.com/package/@daipeng7/iconfont-webpack-plugin
+- 主要转化模块，来自 https://www.npmjs.com/package/@daipeng7/iconfont-webpack-plugin
+- 支持多个项目
+### 图片
+![image](https://user-images.githubusercontent.com/3349863/174603114-1abecd68-3d4c-44a2-bac0-420e291d250a.png)
+![image](https://user-images.githubusercontent.com/3349863/174603642-5ef77d80-eae0-4703-b57d-aa021a221d55.png)
 
 
 ### 配置说明
