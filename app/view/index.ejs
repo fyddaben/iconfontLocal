@@ -101,7 +101,7 @@
           this.uploadSuccessCount++
           if (this.uploadSuccessCount == this.uploadFileCount) {
             if (this.dirArray.indexOf(this.projectName) == -1) {
-              this.dirArray.push(inputValue);
+              this.dirArray.push(this.projectName);
             }
             this.dialogVisible = false
             this.$message({
