@@ -3,8 +3,6 @@
 iconfont project
 
 
-### 项目说明
-https://deepwise.feishu.cn/docx/doxcnsGYjToz9Gu72phROAF5SXc
 ### 配置说明
 ```
 // icon 源文件目录 
