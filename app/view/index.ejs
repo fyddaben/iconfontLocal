@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <!-- import CSS -->
-  <link rel="stylesheet" href="/public/element/index.css">
+  <link rel="stylesheet" href="/public/element/index.css?r=<%= random %>">
   <style>
     .el-tag + .el-tag {
       margin-left: 10px;
@@ -111,6 +111,7 @@
             // 重置
             this.uploadSuccessCount = 0
             this.uploadFileCount = 0
+            this.projectName = ''
             this.loading.close()
           }
         },

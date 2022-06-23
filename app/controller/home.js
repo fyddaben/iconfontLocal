@@ -10,7 +10,8 @@ class HomeController extends Controller {
     const dirArray = await ctx.service.icon.findProDir(iconOutDir);
     await ctx.render('index.ejs', {
       dirArray,
-      iconUrl
+      iconUrl,
+      random: new Date().getTime()
     });
   }
   async uploadSvg() {

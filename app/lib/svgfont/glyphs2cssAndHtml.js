@@ -18,7 +18,7 @@ module.exports = function (fileMark, glyphDatas, options) {
     }
     if (options.htmlOutput) {
         // html模板中css文件的相对文件名
-        options.htmlCssFile = path.relative(path.dirname(options.htmlOutput), options.cssOutput);
+        options.htmlCssFile = path.relative(path.dirname(options.htmlOutput), options.cssOutput) + '?r=' + new Date().getTime();
     }
     // css模板中的字体文件的相对路径
     if(!options.cssFontPath) {

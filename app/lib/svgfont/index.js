@@ -16,10 +16,6 @@ module.exports = class IconfontPlugin {
             }
         }
         this.options = Object.assign({}, options);
-
-
-        this.compile = this.compile.bind(this);
-        this.watch = this.watch.bind(this);
     }
 
     apply(compiler) {
@@ -28,8 +24,7 @@ module.exports = class IconfontPlugin {
     }
 
     build(callback) {
-        return nodify(
-            generate.byGlobby(this.options)
+        return generate.byGlobby(this.options)
                 .then(result => {
                     return writeFiles(result)
                 })
@@ -38,9 +33,7 @@ module.exports = class IconfontPlugin {
                     this.options.success && this.options.success();
                     return ret
                 })
-                .catch(console.error.bind(console)),
-            error => callback && callback(error)
-        );
+                .catch(console.error.bind(console));
     }
 
     compile(compiler, callback) {
